@@ -1,0 +1,47 @@
+<link rel="import" href="bower_components/pel-kanban/pel-kanban-body.html"/>
+<link rel="import" href="bower_components/pel-kanban/pel-kanban-header.html"/>
+
+<pel-kanban-header id="b" kpis={{summaryData}} overall={{overallData}}></pel-kanban-header>
+
+<px-card>
+	<pel-kanban-body data={{bodyData}}></pel-kanban-body>
+</px-card>
+
+<script>
+    	$scope.summaryData =[
+		 { label: 'FW', value: 16.3, uom: 'SCOT', value2: 95, uom2: '%', },
+		 { label: 'TT', value: 90, uom: 'min/set', value2: -26, uom2: 'min', },
+		 { label: 'Plan', value: 6, uom: 'units/day', value2: -3, uom2: 'set', },
+		 { label: 'Completion', value: 12, uom: '% /wk', value2: 26, uom2: 'set', value3: -23, uom3: 'set', },
+		 { label: 'Utilization', value: 43, uom: '% DT', value2: 19, uom2: 'h/wk', } ];
+    	
+		 var mockHeaderData = [{"ComplitedRate":73,"F":5,"W":17,"LeftDayQty":2,"LeftWeekQty":4,"PlanWeekQty":26,
+			 "PlanDayQty":6,"DT":9,"LeftTime":68,"scot":"95","TT":90}];  
+		 var mockBodyData = 
+			 [[{"MaterialStatus":1,"Model":"KL64","JO":"BAXG1600018","SpecID":"Spc0000000000322",
+				 "ResourceId":"Res0000000000118","SpecNM":"CTG-M1","AndonStatus":"0"},
+				 {"MaterialStatus":1,"Model":"Tandem540","JO":"T1EG1600040","SpecID":"Spc0000000000323",
+				"ResourceId":"Res0000000000118","SpecNM":"CTG-M2","AndonStatus":"0"},
+				{"MaterialStatus":1,"Model":"CJ3.6-A M40","JO":"BCEG1600029","SpecID":"Spc0000000000324",
+				"ResourceId":"Res0000000000118","SpecNM":"CTG-M3","AndonStatus":"0"},
+				{"MaterialStatus":1,"Model":"CJ3.5 EVO","JO":"BAFG1600002","SpecID":"Spc0000000000325",
+				"ResourceId":"Res0000000000118","SpecNM":"CTG-M4","AndonStatus":"0"}], 
+			[{"Status":0,"SpecNM":"CTG-M1","ICCardGroupNM":"BAXM1-K1"},
+			 {"Status":0,"SpecNM":"CTG-M1","ICCardGroupNM":"BAXM1-K2"},
+			 {"Status":0,"SpecNM":"CTG-M3","ICCardGroupNM":"BAYM3-K1"},
+			 {"Status":0,"SpecNM":"CTG-M2","ICCardGroupNM":"T1EM2-K1"}], 
+			[{"Status":0,"SpecNM":"CTG-M1","ICCardGroupNM":"BAXM1-F1"},
+			 {"Status":0,"SpecNM":"CTG-M1","ICCardGroupNM":"BAXM1-F2"},
+			 {"Status":0,"SpecNM":"CTG-M1","ICCardGroupNM":"BAXM1-F3"},
+			 {"Status":0,"SpecNM":"CTG-M1","ICCardGroupNM":"BAXM1-F4"},
+			 {"Status":1,"SpecNM":"CTG-M4","ICCardGroupNM":"BAZM4-F1"},
+			 {"Status":0,"SpecNM":"CTG-M2","ICCardGroupNM":"T1EM2-F1"}],
+			[{"Status":0,"ICCardGroupId":"Cdp0000000000445","SpecNM":"CTG-M1","ICCardGroupNM":"BAXAS-S11"},
+			 {"Status":0,"ICCardGroupId":"Cdp0000000000565","SpecNM":"CTG-M1","ICCardGroupNM":"BAXAS-S12"},
+			 {"Status":0,"ICCardGroupId":"Cdp0000000000152","SpecNM":"CTG-M3","ICCardGroupNM":"BAYAS-S31"},
+			 {"Status":0,"ICCardGroupId":"Cdp0000000000153","SpecNM":"CTG-M3","ICCardGroupNM":"BAYAS-S32"},
+			 {"Status":0,"ICCardGroupId":"Cdp0000000000154","SpecNM":"CTG-M3","ICCardGroupNM":"BAYAS-S33"},
+			 {"Status":0,"ICCardGroupId":"Cdp0000000000391","SpecNM":"CTG-M2","ICCardGroupNM":"T1EAS-S21"}]];	    	
+    	
+		 $scope.bodyData = mockBodyData;
+</script>

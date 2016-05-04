@@ -1,0 +1,84 @@
+<link rel="import" href="../polymer/polymer.html"/>
+<link rel="import" href="pel-kanban-main.html"/>
+
+<dom-module id="pel-kanban-body">
+	<style>
+	</style>
+    <template>
+    	<br/>
+        <template is="dom-repeat" items="{{mains}}">
+	        <pel-kanban-main data={{item}}></pel-kanban-main>
+        </template>  
+	</template>
+</dom-module>
+
+<script>
+    Polymer({
+        is: 'pel-kanban-body',
+        properties: {
+        	data: {
+                type: Array,
+                observer: 'changeData'
+            },
+            mains: {
+            	type: Array,
+            },
+            svg: {
+                type: Object
+            },    
+            width: Number,
+            height: Number,
+            label: {
+                type: String,
+                //observer: '_drawChart'
+            }
+        },
+        attached: function() {
+        },      
+        changeData: function() {            	
+        	if(this.data!=null && this.data.length>3)
+       		{
+        		this.mains = this.data[0];
+        		// Add kitting cart
+        		for(var i=0; i<this.data[1].length; i++)
+        		{        			
+            		for(var j=0; j<this.mains.length; j++)
+            		{
+            			if(this.mains[j].SpecNM==this.data[1][i].SpecNM)
+            			{
+            				if(typeof(this.mains[j].kitting)=='undefined')
+            					this.mains[j].kitting = [];
+            				this.mains[j].kitting.push(this.data[1][i]);
+            			}            				
+            		} 
+        		} 
+        		// Add material
+        		for(var i=0; i<this.data[2].length; i++)
+        		{        			
+            		for(var j=0; j<this.mains.length; j++)
+            		{
+            			if(this.mains[j].SpecNM==this.data[2][i].SpecNM)
+            			{
+            				if(typeof(this.mains[j].material)=='undefined')
+            					this.mains[j].material = [];
+            				this.mains[j].material.push(this.data[2][i]);
+            			}            				
+            		} 
+        		}  
+        		// Add sub
+        		for(var i=0; i<this.data[3].length; i++)
+        		{        			
+            		for(var j=0; j<this.mains.length; j++)
+            		{
+            			if(this.mains[j].SpecNM==this.data[3][i].SpecNM)
+            			{
+            				if(typeof(this.mains[j].subs)=='undefined')
+            					this.mains[j].subs = [];
+            				this.mains[j].subs.push(this.data[3][i]);
+            			}            				
+            		} 
+        		}          		
+       		}
+        },
+    });
+</script>
